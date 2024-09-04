@@ -21,15 +21,18 @@
 </head>
 
 <body>
+
+
+
     <div class="container">
         <div class="row" id="app">
             <h1 class="text-center mt-5">Galleria</h1>
             <div id="carousel">
-                <i id="prev" class="bi bi-arrow-up-square"></i>
+                <i id="prev" class="bi bi-arrow-up-square" @click="prevPic"></i>
                 <div class="gallery row">
-                    <img v-for(pic in pics) alt="pic" class="active">
+                    <img :src="pics[activeIndex].image" alt="pic" class="active img-fluid">
                 </div>
-                <i id="next" class="bi bi-arrow-down-square"></i>
+                <i id="next" class="bi bi-arrow-down-square" @click="nextPic"></i>
             </div>
 
             <div id="thumbnail">
@@ -38,6 +41,9 @@
 
         </div>
     </div>
+
+    <!-- VUE -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </body>
 
