@@ -49,7 +49,7 @@
             <!-- THUMBNAIL -->
             <div id="thumbnail">
                 <!-- IMMAGINI THUMBNAIL -->
-                <img v-for="pic in pics[0].image" alt="pic" class="active">
+                <img v-for="pic in pics" :src="pics[activeIndex].image" alt="pic" class="active">
             </div>
 
         </div>
