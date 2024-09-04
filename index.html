@@ -29,14 +29,16 @@
             <h1 class="text-center mt-5">Galleria</h1>
             <div id="carousel">
                 <i id="prev" class="bi bi-arrow-up-square" @click="prevPic"></i>
-                <div class="gallery row">
-                    <img :src="pics[activeIndex].image" alt="pic" class="active img-fluid">
+                <div class="gallery row position-relative">
+                    <img :src="pics[activeIndex].image" alt="pic - [i]" class="active img-fluid">
+                    <h3 class="position-absolute text-white text-end">{{pics[activeIndex].title}}</h3>
+                    <p class="position-absolute text-white text-end fs-5">{{pics[activeIndex].text}}</p>
                 </div>
                 <i id="next" class="bi bi-arrow-down-square" @click="nextPic"></i>
             </div>
 
             <div id="thumbnail">
-                <!-- Immagini delle thumbnails -->
+                <img :src="pics[activeIndex].image" alt="pic - [i]" class="active">
             </div>
 
         </div>
