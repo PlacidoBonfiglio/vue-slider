@@ -1,96 +1,35 @@
-console.log('JS OK');
-
-// Creazione costante con le immagini
-// Prendere elementi dal DOM
-// Creare le immagini
-// Aggiungo la classe active alla prima immagine
-// Rendere funzionanti i bottoni next e prev
-// Rimuovere la classe active all'immagine corrente
-// Controllo se vado fuori Array 
-// Aggiungo la classe active all'immagine successiva
-
-
-// Creazione costante con le immagini
-const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
-
-//Prendere elementi dal DOM
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
-const carouselGallery = document.querySelector('.gallery');
-const thumbnailGallery = document.getElementById('thumbnail');
-
-// Creo l'elemento immagine e lo stampo in pagina (sia carosello che thumbnails)
-let imgs = '';
-
-for (let i = 0; i < sources.length; i++) {
-    imgs += `<img src="${sources[i]}" alt="immagine-${i + 1}">`;
-}
-
-carouselGallery.innerHTML = imgs;
-thumbnailGallery.innerHTML = imgs;
-
-// Creo questa variabile in questa posizione altrimenti JS non troverebbe le immagini nell HTML
-const images = document.querySelectorAll('#carousel img');
-const thumbs = document.querySelectorAll('#thumbnail img');
-
-// Aggiungo la classe active alla prima immagine (thumb e gallery)
-let currentActiveIndex = 0
-images[currentActiveIndex].classList.add('active');
-thumbs[currentActiveIndex].classList.add('active');
-
-// Aggiungere funziona al pulsante NEXT
-nextButton.addEventListener('click', function() {
-    // Rimozione della classe active dall'immagine corrente
-    images[currentActiveIndex].classList.remove('active');
-    thumbs[currentActiveIndex].classList.remove('active');
-
-    // Incremento l'indice quindi passo all'immagine successiva
-    currentActiveIndex++;
-
-    // Controllo se vado fuori dall array
-    if (currentActiveIndex === images.length) {
-        currentActiveIndex = 0;
+const { createApp } = Vue;
+createApp({
+    data() {
+        return {
+            pics: [
+                {
+                    image: 'img/01.webp',
+                    title: 'Marvel\'s Spiderman Miles Morale',
+                    text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
+                },
+                {
+                    image: 'img/02.webp',
+                    title: 'Ratchet & Clank: Rift Apart',
+                    text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
+                },
+                {
+                    image: 'img/03.webp',
+                    title: 'Fortnite',
+                    text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+                },
+                {
+                    image: 'img/04.webp',
+                    title: 'Stray',
+                    text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+                },
+                {
+                    image: 'img/05.webp',
+                    title: "Marvel's Avengers",
+                    text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
+                },
+            ],
+        }
     }
 
-    // Aggiungo la classe active all'immagine successiva
-    images[currentActiveIndex].classList.add('active');
-    thumbs[currentActiveIndex].classList.add('active');
-})
-
-// Aggiungere funziona al pulsante PREV
-prevButton.addEventListener('click', function() {
-    // Rimozione della classe active dall'immagine corrente
-    images[currentActiveIndex].classList.remove('active');
-    thumbs[currentActiveIndex].classList.remove('active');
-
-    // Decremento l'indice quindi passo all'immagine precedente
-    currentActiveIndex--;
-
-    // Controllo se vado fuori dall arrayù
-    if (currentActiveIndex < 0) {
-        currentActiveIndex = images.length - 1;
-    }
-
-    // Aggiungo la classe active all'immagine successiva
-    images[currentActiveIndex].classList.add('active');
-    thumbs[currentActiveIndex].classList.add('active');
-})
-
-// Reazione al click della thumbnail
-for (let i = 0; i < thumbs.length; i++) {
-    
-    thumbs[i].addEventListener('click', function() {
-        
-        // Rimozione classe active dalle immagini della thumb
-        images[currentActiveIndex].classList.remove('active');
-        thumbs[currentActiveIndex].classList.remove('active');
-
-        // Setto l'indice allo stesso valore dell'immagine della thumb
-        currentActiveIndex = i;
-
-        // Inserire classe active dalle immagini della thumb
-        images[currentActiveIndex].classList.add('active');
-        thumbs[currentActiveIndex].classList.add('active');
-    })
-}
-
+}).mount('#app');
